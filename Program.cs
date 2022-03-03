@@ -34,6 +34,10 @@ namespace Heist
             }
 
             Crew.CalculateSkill();
+            HeistedBank.CalculateLuck();
+
+            Console.WriteLine($"The bank's difficulty is {HeistedBank.Difficulty}.");
+            Console.WriteLine($"The crew's skill level is {Crew.CollectiveSkill}.");
 
             if (Crew.CollectiveSkill >= HeistedBank.Difficulty)
             {
