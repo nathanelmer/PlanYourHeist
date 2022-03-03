@@ -32,8 +32,11 @@ namespace Heist
                 Crew.TeamList.Add(NewMember);
                 Console.WriteLine($"Your team has {Crew.TeamList.Count} members");
             }
-
+            Console.Write("Please Enter Number Of Tries: ");
+            int userTries = int.Parse(Console.ReadLine());
             Crew.CalculateSkill();
+            for (int i = 0; i < userTries; i++)
+            {
             HeistedBank.CalculateLuck();
 
             Console.WriteLine($"The bank's difficulty is {HeistedBank.Difficulty}.");
@@ -46,6 +49,8 @@ namespace Heist
             else
             {
                 Console.WriteLine("You Lose");
+            }
+
             }
 
 
