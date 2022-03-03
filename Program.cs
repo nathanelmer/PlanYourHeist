@@ -8,6 +8,7 @@ namespace Heist
         static void Main(string[] args)
         {
 
+            Bank HeistedBank = new Bank();
             Team Crew = new Team();
 
             Console.WriteLine("Plan Your Heist!");
@@ -28,16 +29,22 @@ namespace Heist
                 Console.WriteLine($"Enter {chosenName}'s Courage Level (0.0 - 2.0): ");
                 double chosenCourage = double.Parse(Console.ReadLine());
                 TeamMember NewMember = new TeamMember(chosenName, chosenSkill, chosenCourage);
-                Console.WriteLine($"Your member is: {NewMember.Name}, skill level {NewMember.SkillLevel}, with a courage factor of {NewMember.CourageFactor}!!!");
                 Crew.TeamList.Add(NewMember);
                 Console.WriteLine($"Your team has {Crew.TeamList.Count} members");
             }
 
-            foreach (TeamMember member in Crew.TeamList)
+            Crew.CalculateSkill();
+
+            if (Crew.CollectiveSkill >= HeistedBank.Difficulty)
             {
-                Console.WriteLine($"Team Member {member.Name} has a skill level of {member.SkillLevel} and a courage factor of {member.CourageFactor}.");
-                Console.WriteLine("-----------------------------------------------------------------------------------------------------------------");
+                Console.WriteLine("You win");
             }
+            else
+            {
+                Console.WriteLine("You Lose");
+            }
+
+
 
 
         }
